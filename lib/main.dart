@@ -1,6 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
+import 'src/themes/spacing/linear_scale.dart';
 import 'src/themes/text/accent_text_theme.dart';
 import 'src/themes/text/generic_text_theme.dart';
 import 'src/themes/text/typography/h/h1.dart';
@@ -57,17 +58,44 @@ class MyHomePage extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: <Widget>[
-              H1(
-                text: 'texto h1 XD',
+              Container(
+                color: Colors.red,
+                padding: EdgeInsets.all(space_spring_green),
+                margin: EdgeInsets.all(space_carmine),
+                child: H1(
+                  text: 'texto h1 XD',
+                ),
               ),
-              H2(
-                text: 'texto h2 XD',
+              Container(
+                color: Colors.green,
+                padding: EdgeInsets.symmetric(
+                  horizontal: space_golden_dream,
+                  vertical: space_spring_green,
+                ),
+                child: H2(
+                  text: 'texto h2 XD',
+                ),
               ),
-              H3(
-                text: 'texto h3 XD',
+              Container(
+                color: Colors.orange,
+                padding: EdgeInsets.only(
+                  bottom: space_dodger_blue,
+                ),
+                child: H3(
+                  text: 'texto h3 XD',
+                ),
               ),
-              H4(
-                text: 'texto h4 XD',
+              Container(
+                color: Colors.pink,
+                padding: EdgeInsets.fromLTRB(
+                  space_dodger_blue,
+                  space_spring_green,
+                  space_fire_bush,
+                  space_carmine,
+                ),
+                child: H4(
+                  text: 'texto h4 XD',
+                ),
               ),
             ],
           ),
