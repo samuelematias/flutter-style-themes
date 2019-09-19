@@ -1,13 +1,9 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
-import 'src/themes/spacing/linear_scale.dart';
-import 'src/themes/text/accent_text_theme.dart';
-import 'src/themes/text/generic_text_theme.dart';
-import 'src/themes/text/typography/h/h1.dart';
-import 'src/themes/text/typography/h/h2.dart';
-import 'src/themes/text/typography/h/h3.dart';
-import 'src/themes/text/typography/h/h4.dart';
+import 'src/themes/button_theme_custom.dart';
+import 'src/themes/dimens.dart';
+import 'src/themes/text_theme_custom.dart';
 
 void main() {
   runApp(MyApp());
@@ -25,14 +21,8 @@ class MyApp extends StatelessWidget {
         brightness: Brightness.dark,
         primaryColor: Colors.lightBlue[800],
         accentColor: Colors.cyan[600],
-
         // Define the default font family.
         fontFamily: 'Montserrat',
-
-        // Define the default TextTheme. Use this to specify the default
-        // text styling for headlines, titles, bodies of text, and more.
-        textTheme: GenericTextTheme(),
-        accentTextTheme: AccentTextTheme(),
       ),
       home: MyHomePage(
         title: appName,
@@ -60,57 +50,63 @@ class MyHomePage extends StatelessWidget {
             children: <Widget>[
               Container(
                 color: Colors.red,
-                padding: EdgeInsets.all(space_spring_green),
-                margin: EdgeInsets.all(space_carmine),
-                child: H1(
-                  text: 'texto h1 XD',
+                padding: EdgeInsets.all(Space.spring_green),
+                margin: EdgeInsets.all(Space.carmine),
+                child: Text(
+                  'texto h1 XD',
+                  style: TextThemeCustom().title.h1,
                 ),
               ),
               Container(
                 color: Colors.green,
                 padding: EdgeInsets.symmetric(
-                  horizontal: space_golden_dream,
-                  vertical: space_spring_green,
+                  horizontal: Space.golden_dream,
+                  vertical: Space.spring_green,
                 ),
-                child: H2(
-                  text: 'texto h2 XD',
-                ),
-              ),
-              Container(
-                color: Colors.orange,
-                padding: EdgeInsets.only(
-                  bottom: space_dodger_blue,
-                ),
-                child: H3(
-                  text: 'texto h3 XD',
+                child: Text(
+                  'texto h2 XD',
+                  style: TextThemeCustom().title.h2,
                 ),
               ),
               Container(
-                color: Colors.pink,
+                  color: Colors.orange,
+                  padding: EdgeInsets.only(
+                    bottom: Space.dodger_blue,
+                  ),
+                  child: Text(
+                    'texto h3 XD',
+                    style: TextThemeCustom().title.h3,
+                  )),
+              Container(
                 padding: EdgeInsets.fromLTRB(
-                  space_dodger_blue,
-                  space_spring_green,
-                  space_fire_bush,
-                  space_carmine,
+                  Space.dodger_blue,
+                  Space.spring_green,
+                  Space.dodger_blue,
+                  Space.carmine,
                 ),
-                child: H4(
-                  text: 'texto h4 XD',
+                child: ButtonThemeCustom.primaryButton(
+                  () => print('HAHAH XD'),
+                  _renderContentButton(),
                 ),
               ),
             ],
           ),
         ),
       ),
-      floatingActionButton: Theme(
-        data: Theme.of(context).copyWith(
-          colorScheme:
-              Theme.of(context).colorScheme.copyWith(secondary: Colors.yellow),
+    );
+  }
+
+  Widget _renderContentButton() {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.center,
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: <Widget>[
+        Text("Samuca XD"),
+        Icon(
+          Icons.access_alarm,
+          size: Space.fire_bush,
         ),
-        child: FloatingActionButton(
-          onPressed: null,
-          child: Icon(Icons.add),
-        ),
-      ),
+      ],
     );
   }
 }
